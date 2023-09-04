@@ -83,6 +83,7 @@ namespace FavoriteColorAndNumber
             // read favorite number, store in variable 
             sFavoriteNumber = Console.ReadLine();
 
+
             while (nFavoriteNumber == null) 
             {
                 try
