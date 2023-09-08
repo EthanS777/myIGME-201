@@ -84,11 +84,13 @@ namespace FavoriteColorAndNumber
             sFavoriteNumber = Console.ReadLine();
 
 
-            while (nFavoriteNumber == null) 
+            while (nFavoriteNumber == null)
             {
                 try
                 {
                     nFavoriteNumber = Convert.ToInt32(sFavoriteNumber);
+                   // or, another way to convert: nFavoriteNumber = int.Parse(sFavoriteNumber);
+                   // or, another way to convert: nFavoriteNumber = int.TryParse(sFavoriteNumber);
                 }
                 catch
                 {
@@ -96,7 +98,40 @@ namespace FavoriteColorAndNumber
                 }
             }
 
+            // set favorite color to lower case
+            // this WON'T change string contents, it's not equal to sFavoriteColor itself
+            sFavoriteColor.ToLower();
+
+            // change console output color to match their fav color
+            switch (sFavoriteColor.ToLower())
+            {
+                case "red":
+                case "RED":
+                case "Red":
+                case "rEd":
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+
+                case "blue":
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                case "green":
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+
+                    // or.. if none of the above.. then:
+                default:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+            }
             // a loop that outputs their favorite color fav num of times 
+            for (int i = 0; i < nFavoriteNumber; ++i)
+            {
+                Console.WriteLine("Your favorite color is: " + sFavoriteColor);
+          // string interpolation: Console.WriteLine($"Your favorite color is {sFavoriteColor}");
+          // Console.WriteLine("Your {0} favorite color is {1}{2}", "most", sFavoriteColor);
+            }
+
         }
     }
 }
