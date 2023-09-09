@@ -29,23 +29,34 @@
         private void InitializeComponent()
         {
             this.houdiniPictureBox = new System.Windows.Forms.PictureBox();
+            this.exitButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.houdiniPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // houdiniPictureBox
             // 
-            this.houdiniPictureBox.Location = new System.Drawing.Point(39, 35);
+            this.houdiniPictureBox.Location = new System.Drawing.Point(31, 28);
             this.houdiniPictureBox.Name = "houdiniPictureBox";
-            this.houdiniPictureBox.Size = new System.Drawing.Size(225, 285);
-            this.houdiniPictureBox.TabIndex = 0;
+            this.houdiniPictureBox.Size = new System.Drawing.Size(180, 228);
+            this.houdiniPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.houdiniPictureBox.TabIndex = 1;
             this.houdiniPictureBox.TabStop = false;
-            this.houdiniPictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // exitButton
+            // 
+            this.exitButton.Location = new System.Drawing.Point(86, 291);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.TabIndex = 2;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
             // 
             // HoudiniForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(236, 337);
+            this.ClientSize = new System.Drawing.Size(233, 328);
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.houdiniPictureBox);
             this.Name = "HoudiniForm";
             this.Text = "Houdini";
@@ -57,6 +68,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox houdiniPictureBox;
+        private System.Windows.Forms.Button exitButton;
     }
 }
 

@@ -12,15 +12,21 @@ namespace Practice
     {
         static void Main(string[] args)
         {
-            int i;
-            for (i = 1; i <= 10; i++)
+            int number = 3;
+            switch (number)
             {
-                if ((i % 2) == 0)
-                {
-                    continue;
-                }
-                
-                Console.WriteLine(i);
+                case 1:
+                    Console.WriteLine("Just");
+                    break;
+
+                case 2:
+                case 4:
+                    Console.WriteLine("an");
+                    break;
+
+                default:
+                    Console.WriteLine("example");
+                    break;
             }
 
         }
