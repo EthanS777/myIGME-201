@@ -47,6 +47,7 @@ namespace Mandelbrot
             double numRealStart = Convert.ToDouble(realCoordStart);
             double numRealEnd = Convert.ToDouble(realCoordEnd);
 
+
             // first for-loop: adjust to start with user input, go until user input, and decrement by dividing by 48 to show 48 values
 
             for (imagCoord = numImagStart; imagCoord >= numImagEnd; imagCoord -= ((numImagStart - numImagEnd) / 48))
