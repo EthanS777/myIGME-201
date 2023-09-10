@@ -6,7 +6,8 @@ namespace Mandelbrot
     /// This class generates Mandelbrot sets in the console window!
     /// </summary>
 
-
+    // Ethan Schechter
+    // Practice Exercise 4: Mandelbrot 
     class Class1
     {
         /// <summary>
@@ -24,10 +25,48 @@ namespace Mandelbrot
             double realCoord, imagCoord;
             double realTemp, imagTemp, realTemp2, arg;
             int iterations;
-            for (imagCoord = 1.2; imagCoord >= -1.2; imagCoord -= 0.05)
+
+            // Ask user for image coord start/end info:
+
+            Console.Write("Choose new start value for imagCoord! It decrements, and default start value is 1.2 : ");
+            string imagCoordStart = Console.ReadLine();
+            Console.Write("Choose new end value (MUST be lower than start #) for imagCoord! Default end value is -1.2 : ");
+            string imagCoordEnd = Console.ReadLine();
+
+            // Ask user for real coord start/end info:
+
+            Console.Write("Choose new start value for realCoord! It increments, and default start value is -0.6 : ");
+            string realCoordStart = Console.ReadLine();
+            Console.Write("Choose new end value (MUST be higher than start #) for realCood! Default end value is 1.77 : ");
+            string realCoordEnd = Console.ReadLine();
+
+            // convert to numbers (decimal):
+
+            double numImagStart = Convert.ToDouble(imagCoordStart);
+            double numImagEnd = Convert.ToDouble(imagCoordEnd);
+            double numRealStart = Convert.ToDouble(realCoordStart);
+            double numRealEnd = Convert.ToDouble(realCoordEnd);
+
+            // first for-loop: adjust to start with user input, go until user input, and decrement by dividing by 48 to show 48 values
+
+            for (imagCoord = numImagStart; imagCoord >= numImagEnd; imagCoord -= ((numImagStart - numImagEnd) / 48))
             {
-                for (realCoord = -0.6; realCoord <= 1.77; realCoord += 0.03)
+                // if the starting image coord number is less than the end #, INVALID
+                if (numImagStart < numImagEnd)
                 {
+                    Console.WriteLine("INVALID VALUES");
+                }
+
+                // second for-loop: adjust to start with user input, end with user input, increment divide by 80 for 80 values
+
+                for (realCoord = numRealStart; realCoord <= numRealEnd; realCoord += ((numRealEnd - numRealStart) / 80))
+                {
+                    // if starting real coord number is greater than end #, INVALID
+                    if (numRealStart > numRealEnd)
+                    {
+                        Console.WriteLine("INVALID VALUES");
+                    }
+
                     iterations = 0;
                     realTemp = realCoord;
                     imagTemp = imagCoord;
