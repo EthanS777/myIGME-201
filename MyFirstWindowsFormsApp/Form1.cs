@@ -46,7 +46,6 @@ namespace MyFirstWindowsFormsApp
 
             // set the visible property of the houdiniPictureBox to the current boolean value of the Tag property
             pb.Visible = (bool)pb.Tag;
-
         }
 
 
