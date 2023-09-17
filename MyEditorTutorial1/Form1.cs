@@ -147,5 +147,10 @@ namespace MyEditorTutorial1
 
             this.richTextBox.SelectionFont = newFont;
         }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
