@@ -12,22 +12,9 @@ namespace Practice
     {
         static void Main(string[] args)
         {
-            int number = 3;
-            switch (number)
-            {
-                case 1:
-                    Console.WriteLine("Just");
-                    break;
-
-                case 2:
-                case 4:
-                    Console.WriteLine("an");
-                    break;
-
-                default:
-                    Console.WriteLine("example");
-                    break;
-            }
+            string[] blab = new string[5];
+            blab[4] = "5th string";
+            Console.WriteLine(blab[4]);
 
         }
     }
