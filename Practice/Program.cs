@@ -12,9 +12,11 @@ namespace Practice
     {
         static void Main(string[] args)
         {
-            string[] blab = new string[5];
-            blab[4] = "5th string";
-            Console.WriteLine(blab[4]);
+            byte byteVal;
+            short shortVal = -556;
+            byteVal = (byte)shortVal;
+            Console.WriteLine("byteVal = {0}", byteVal);
+
 
         }
     }

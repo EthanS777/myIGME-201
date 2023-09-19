@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace UT1_Q4
 {
@@ -11,8 +12,10 @@ namespace UT1_Q4
     // Unit Test 1: Question 4
 
     // Purpose: to re-create the 3questions.exe program
-    internal class Program
+    static internal class Program
     {
+        static Timer timerTime;
+        static bool isTimeOut;
         // Main: recreating the 3questions program
         static void Main(string[] args)
         {
@@ -54,6 +57,13 @@ namespace UT1_Q4
           
 
 
+        }
+        static void TimesUp(object sender, ElapsedEventArgs e)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Your time is up!");
+                isTimeOut = true;
+            timerTime.Stop();
         }
     }
 }

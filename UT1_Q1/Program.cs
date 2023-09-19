@@ -178,6 +178,7 @@ class Program
                 try
                 {
                     nResponse = int.Parse(sResponse);
+                    dResponse = double.Parse(sResponse);
                     bValid = true;
                 }
                 catch
