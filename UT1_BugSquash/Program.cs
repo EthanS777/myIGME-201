@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 
 namespace UT1_BugSquash
 {
@@ -34,13 +35,14 @@ namespace UT1_BugSquash
             while (!int.TryParse(sNumber, out nY)); // fixed
 
             // compute the exponent of the number using a recursive function
-            nAnswer = Power(nX, nY);
+             nAnswer = Power(nX, nY);
 
             Console.WriteLine("{nX}^{nY} = {nAnswer}");
         }
 
 
-        int Power(int nBase, int nExponent)
+       // int Power(int nBase, int nExponent) COMPILE-TIME ERROR: did not include "static"
+       static int Power(int nBase, int nExponent) 
         {
             int returnVal = 0;
             int nextVal = 0;
@@ -60,7 +62,8 @@ namespace UT1_BugSquash
                 returnVal = nBase * nextVal;
             }
 
-            returnVal;
+            // returnVal; COMPILE-TIME ERROR - should be "return returnVal", with the statement "return"
+            return returnVal;
         }
     }
 }

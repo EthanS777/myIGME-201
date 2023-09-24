@@ -17,10 +17,6 @@ static class Program
 
     static void Main()
     {
-        timeOutTimer = new System.Threading.Timer(5);
-
-        timeOutTimer.Elapsed += new ElapsedEventHandler(TimesUp);
-        timeOutTimer.Start();
         // store user name
         string myName = "";
 
@@ -267,22 +263,4 @@ static class Program
             }
         } while (true);
     }
-}
-
-static void TimesUp(object sender, ElapsedEventArgs e)
-{
-    // send a newline to the console to interrupt the user entry
-    Console.WriteLine();
-
-    // let the user know their time is up
-    Console.WriteLine("Your time is up!");
-
-    // ask them to press enter to get out of the Console.ReadLine() at line #68
-    Console.WriteLine("Please press Enter.");
-
-    // set the time out flag
-    bTimeOut = true;
-
-    // stop the timer, otherwise it will start over
-    timeOutTimer.Stop();
 }

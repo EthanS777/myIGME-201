@@ -12,24 +12,12 @@ namespace Practice
     {
         static void Main(string[] args)
         {
-            int[] myArray = { 1, 2, 3 };
+            byte byteVal;
+            short shortVal = -556;
+            byteVal = Convert.ToByte(shortVal);
+            Console.WriteLine("byteVal = {0}", byteVal);
 
-            myFunction("hi", myArray, false);
 
-        }
-
-        static void myFunction(string label, int[] args,
- bool showLabel) // params not needed
-        {
-            if (showLabel) // Equals true? False?
-            {
-                Console.WriteLine(label);
-            }
-
-            foreach (int i in args)
-            {
-                Console.WriteLine("{0}", i);
-            }
         }
 
 
