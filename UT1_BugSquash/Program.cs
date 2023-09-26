@@ -37,7 +37,9 @@ namespace UT1_BugSquash
             // compute the exponent of the number using a recursive function
              nAnswer = Power(nX, nY);
 
-            Console.WriteLine("{nX}^{nY} = {nAnswer}");
+            // Console.WriteLine("{nX}^{nY} = {nAnswer}");  LOGICAL ERROR: literally prints the string with the letters nX/nY instead of values
+            Console.WriteLine(nX + "^" + nY + " = " + nAnswer); // fixed
+
         }
 
 
@@ -52,18 +54,20 @@ namespace UT1_BugSquash
             {
                 // return the base case and do not recurse
                 returnVal = 0;
+                return returnVal + 1; // add return statement to print "1" as result if power is 0
             }
             else
             {
                 // compute the subsequent values using nExponent-1 to eventually reach the base case
-                nextVal = Power(nBase, nExponent + 1);
+                // nextVal = Power(nBase, nExponent + 1); LOGICAL ERROR: used +1 instead of -1
+                nextVal = Power(nBase, nExponent - 1); // fixed
 
                 // multiply the base with all subsequent values
                 returnVal = nBase * nextVal;
             }
 
             // returnVal; COMPILE-TIME ERROR - should be "return returnVal", with the statement "return"
-            return returnVal;
+            return returnVal; // fixed
         }
     }
 }

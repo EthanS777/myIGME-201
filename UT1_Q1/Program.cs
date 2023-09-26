@@ -22,6 +22,7 @@ class Program
         // question and # correct counters
         int nCntr = 0;
         int nCorrect = 0;
+        double dCorrect = 0;
 
         // operator picker
         int nOp = 0;
@@ -160,7 +161,7 @@ class Program
             else if (nOp == 2) // for division
             {
                 dAnswer = val1 / val2;
-                Math.Round(dAnswer, 2);
+                dAnswer = Math.Round(dAnswer, 2);
                 sQuestions = $"Question #{nCntr + 1}: {val1} / {val2} => ";
             }
             else
@@ -206,6 +207,22 @@ class Program
                 Console.WriteLine("I'm sorry {0}. The answer is {1}", myName, nAnswer);
             }
 
+
+            if (dResponse == dAnswer)
+            {
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("Well done, {0}!!!", myName);
+
+                ++dCorrect;
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("I'm sorry {0}. The answer is {1}", myName, nAnswer);
+            }
+            
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
 

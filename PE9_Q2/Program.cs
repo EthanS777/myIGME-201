@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Timers;
-
 
 // Class: Program
 // Author: David Schuh
@@ -12,6 +14,8 @@ static class Program
     // Method: Main()
     // Purpose: Play a math quiz.
     // Restrictions: If the username = "David" and he chose "easy", override with "hard"
+
+    // add class-level variables
     static System.Threading.Timer timeOutTimer;
     static bool bTimeOut = false;
 
@@ -73,6 +77,7 @@ static class Program
                 break;
             }
         }
+
 
     // label to return to if they want to play again
     start:
@@ -150,6 +155,8 @@ static class Program
             switch (nOp)
             {
                 case 0:
+                    timeOutTimer.Start();
+                    
                     nAnswer = val1 + val2;
                     sQuestions = $"Question #{nCntr + 1}: {val1 + " (this first value is really hard)"} + {val2} ==> {val1 + val2} ";
                     sQuestions = "Question #" + (nCntr + 1) + ": " + val1 + " + " + val2 + " ==> " + (val1 + val2) + " ";
@@ -262,5 +269,17 @@ static class Program
                 break;
             }
         } while (true);
+    }
+
+    static void TimesUp(object sender, ElapsedEventArgs e)
+    {
+        Console.WriteLine();
+        Console.WriteLine("Your time is up!");
+
+        // set the time out to true
+        bTimeOut = true;
+
+        // stop timer
+        timeOutTimer.Stop();  // ? 
     }
 }

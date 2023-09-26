@@ -12,11 +12,7 @@ namespace Practice
     {
         static void Main(string[] args)
         {
-            byte byteVal;
-            short shortVal = -556;
-            byteVal = Convert.ToByte(shortVal);
-            Console.WriteLine("byteVal = {0}", byteVal);
-
+            double[] precipitation = { 0.45, 2.78, 0.04, 1.22 };
 
         }
 
