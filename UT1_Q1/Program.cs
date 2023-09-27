@@ -220,7 +220,7 @@ class Program
             {
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("I'm sorry {0}. The answer is {1}", myName, nAnswer);
+                Console.WriteLine("I'm sorry {0}. The answer is {1}", myName, dAnswer);
             }
             
             Console.BackgroundColor = ConsoleColor.Black;

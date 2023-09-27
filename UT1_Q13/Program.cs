@@ -10,7 +10,7 @@ namespace UT1_Q13
 {
     /* class Program: contains the struct Employee- goal: to prompt for user name, call func,
      increase salary if they got a raise */
-    internal class Program
+    static internal class Program
     {
 
             struct Employee { 
@@ -25,5 +25,15 @@ namespace UT1_Q13
 
             }
 
+        static void Main(string[] args)
+        {
+            Employee employeeName = new Employee();
+
+            employeeName.sName = "Ethan";
+            employeeName.dSalary = 30000;
+
+            employeeName.GiveRaise(employeeName.sName, ref employeeName.dSalary);
+
+        }
     }
 }
