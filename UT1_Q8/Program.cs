@@ -27,7 +27,7 @@ namespace UT1_Q8
             int nY = 0;
 
             // we declare our 3 dimensional array to hold:
-            // 42 values of x
+            // 38 values of x
             // 21 values of y 
             // 3 values for each data point: x, y, z
             ZFunction[] zArray = new ZFunction[42 * 21]; 

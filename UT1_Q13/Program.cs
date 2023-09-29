@@ -51,7 +51,7 @@ namespace UT1_Q13
             employeeName.sName = Console.ReadLine();
             employeeName.dSalary = 30000;
 
-            // call the GiveRaise function in Employee struct, passing the sName and dSalary of the struct
+            // call the GiveRaise function in Employee struct, passing only the struct variables as params
             Employee.GiveRaise(employeeName.sName, ref employeeName.dSalary);
 
         }
