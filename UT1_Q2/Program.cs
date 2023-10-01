@@ -1,9 +1,11 @@
 ﻿
 // Unit Exam 1
 // Question 2
-// Modify the numbersort app to request sentences, sort words in ascending/descending order
+// Modify the numbersort app to also request sentences, sort words in ascending order
 
 using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace NumberSort
 {
@@ -21,9 +23,10 @@ namespace NumberSort
             // declare the delegate variable which will point to the function to be called
             sortingFunction findHiLow;
 
+            Console.WriteLine("There are two parts to this program: Part 2 is designed for Question 2 on Unit Exam 1 \n");
         // a label to allow us to easily loop back to the start if there are input issues
         start:
-            Console.WriteLine("Enter a sentence: ");
+            Console.WriteLine("Part 1: Enter a list of space-separated numbers");
 
             // read the space-separated string of numbers
             string sNumbers = Console.ReadLine();
@@ -38,7 +41,7 @@ namespace NumberSort
             double nThisNumber;
 
             // iterate through the array of number strings
-            foreach (string sThisNumber in sNumber) ;
+            foreach (string sThisNumber in sNumber)
             {
                 // if the length of this string is 0 (ie. they typed 2 spaces in a row)
                 if (sThisNumber.Length == 0)
@@ -72,7 +75,7 @@ namespace NumberSort
 
             // reset nUnsortedLength back to 0 to use as the index to store the numbers in the unsorted array
             nUnsortedLength = 0;
-            foreach (string sThisNumber in sWord)
+            foreach (string sThisNumber in sNumber)
             {
                 // still skip the blank strings
                 if (sThisNumber.Length == 0)
@@ -130,6 +133,76 @@ namespace NumberSort
             }
 
             Console.WriteLine();
+
+            // a good space to separate the parts
+            start2:
+
+            // space between Part 1 and Part 2
+            Console.WriteLine("");
+
+            // prompt user for a string, store it in readingNow 
+            Console.Write("Part 2: First, type either ascending or descending: ");
+            string orderType = Console.ReadLine();
+
+            // string variable for the output of the re-arranged array
+            string trueOutput;
+
+            // if the order type is ASCENDING.. sort in ascending order
+            if (orderType == "ascending" || orderType == "Ascending")
+            {
+                Console.Write(" Now, type in a string, and I'll send it back but in ascending alphabetical order!: ");
+                string readingNow = Console.ReadLine();
+
+                string[] arrAy = Regex.Split(readingNow, ""); // split the string into an array 
+                Array.Sort(arrAy); // sort the array to appear in alphabetical order 
+                trueOutput = string.Join("", arrAy); // use string.Join with the array, separate with no spaces to just show letters
+
+                // write the output with just the letters in alphabetical order
+                Console.WriteLine(trueOutput);
+            }
+            // if the order type is DESCENDING.. sort in descending order
+            else if (orderType == "descending" || orderType == "Descending")
+            {
+                Console.Write(" Now, type in a string, and I'll send it back but in descending alphabetical order!: ");
+                string readingNow = Console.ReadLine();
+
+                string[] arrAy = Regex.Split(readingNow, ""); // split the string into an array 
+                Array.Reverse(arrAy); // REVERSE the array
+                trueOutput = string.Join("", arrAy); // use string.Join with the array, separate with no spaces to just show letters
+
+                // write the output with just the letters in alphabetical order
+                Console.WriteLine(trueOutput);
+            }
+            // if neither ascending or descending, give error and prompt to try again 
+            else
+            {
+                Console.WriteLine("Invalid, please select either ascending or descending");
+                goto start2;
+            }
+
+            start3:
+
+            // User prompted to re-try
+            Console.Write("\n Re-try part 2? ");
+            string reTry = Console.ReadLine();
+
+            // if yes, go back up
+            if (reTry == "yes" || reTry == "Yes")
+            {
+                goto start2;
+            }
+            // if no, say goodbye and exit
+            else if (reTry == "no" || reTry == "No")
+            {
+                Console.WriteLine("Bye bye for now");
+                return;
+            }
+            // if neither yes or no, invalid - prompt again
+            else
+            {
+                Console.WriteLine("Choose yes or no");
+                goto start3;
+            }
         }
 
         // find the lowest value in the array of doubles
@@ -221,4 +294,5 @@ namespace NumberSort
         }
     }
 }
+
 

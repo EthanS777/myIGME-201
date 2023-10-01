@@ -31,7 +31,7 @@ namespace UT1_Q8
             // 38 values of x
             // 21 values of y 
             // 3 values for each data point: x, y, z
-            ZFunction[] zArray = new ZFunction[42 * 21]; 
+            double zArray = roundTime(42, 21); 
 
             int dataPointCntr = 0;
 
@@ -46,8 +46,7 @@ namespace UT1_Q8
                 {
                     y = Math.Round(y, 1);
 
-                    ZFunction thisDataPoint = new ZFunction(x, y);
-                    zArray[dataPointCntr++] = thisDataPoint;
+                     double thisDataPoint = roundTime(x, y);
 
                    // zArray[dataPointCntr++] = new ZFunction(x,y);
                 }
@@ -55,7 +54,7 @@ namespace UT1_Q8
         }
 
         // method roundTime, 2 params to round
-        static double roundTime(double dX, int dY)
+        static double roundTime(double dX, double dY)
         {
             Console.Write("Enter a number that's a double!: ");
             string doubleRead = Console.ReadLine();
