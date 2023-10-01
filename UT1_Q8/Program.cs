@@ -11,6 +11,7 @@ namespace UT1_Q8
     // Class Program: goal - implement a multidimensional array for an equation
     internal class Program
     {
+       
         // Main: 3D formula 
         static void Main(string[] args)
         {
@@ -48,10 +49,32 @@ namespace UT1_Q8
                     ZFunction thisDataPoint = new ZFunction(x, y);
                     zArray[dataPointCntr++] = thisDataPoint;
 
-                    // zArray[dataPointCntr++] = new ZFunction(x,y);
+                   // zArray[dataPointCntr++] = new ZFunction(x,y);
                 }
             }
         }
+
+        // method roundTime, 2 params to round
+        static double roundTime(double dX, int dY)
+        {
+            Console.Write("Enter a number that's a double!: ");
+            string doubleRead = Console.ReadLine();
+
+            Console.Write("How many digits do you want it rounded to? (integer): ");
+            string integerRead = Console.ReadLine();
+
+            double trueDoubleRead;
+            int trueIntegerRead;
+            double roundingTime;
+            
+
+            double.TryParse(doubleRead, out trueDoubleRead);
+            int.TryParse(integerRead, out trueIntegerRead);
+
+            roundingTime = Math.Round(trueDoubleRead, trueIntegerRead);
+
+            return roundingTime;
+        }
+
+        }
     }
-    }
-}

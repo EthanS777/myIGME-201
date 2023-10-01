@@ -1,8 +1,14 @@
 ﻿using System.IO;
 using System;
+using System.Dynamic;
 
-class Program
+// Ethan Schechter
+// Exam 1, Question 1
+
+// class purpose: to take the Math Quiz app, include division and have user round to 2 decimals
+static class Program
 {
+    // Main: holds all the code for this solution
     static void Main()
     {
         // store user name
@@ -11,10 +17,12 @@ class Program
         // string and int of # of questions
         string sQuestions = "";
         int nQuestions = 0;
+        double dQuestions = 0;
 
         // string and base value related to difficulty
         string sDifficulty = "";
         int nMaxRange = 0;
+        double dMaxRange = 0;
 
         // constant for setting difficulty with 1 variable
         const int MAX_BASE = 10;
@@ -31,6 +39,10 @@ class Program
         int val1 = 0;
         int val2 = 0;
         int nAnswer = 0;
+
+        double dVal1 = 0;
+        double dVal2 = 0;
+
 
         // add a double to be the answer when problem is division
         double dAnswer = 0;
@@ -137,6 +149,9 @@ class Program
             val1 = rand.Next(0, nMaxRange) + nMaxRange;
             val2 = rand.Next(0, nMaxRange);
 
+            dVal1 = rand.Next(0, nMaxRange) + dMaxRange;
+            dVal2 = rand.Next(0, nMaxRange);
+
             // if either argument is 0, pick new numbers
             if (val1 == 0 || val2 == 0)
             {
@@ -147,80 +162,122 @@ class Program
 
             // if nOp == 0, then addition
             // if nOp == 1, then subtraction
-            // else multiplication
-            if (nOp == 0)
+            // else multiplication or DIVISION
+            if (nOp == 0) // addition
             {
                 nAnswer = val1 + val2;
                 sQuestions = $"Question #{nCntr + 1}: {val1} + {val2} => ";
             }
-            else if (nOp == 1)
+            else if (nOp == 1) // subtraction
             {
-                nAnswer = val1 - val2;
+                nAnswer = val1 - val2; 
                 sQuestions = $"Question #{nCntr + 1}: {val1} - {val2} => ";
             }
-            else if (nOp == 2) // for division
+            else if (nOp == 2) // when nOp is 2, that's for division
             {
-                dAnswer = val1 / val2;
+                dAnswer = dVal1 / dVal2;
+                // ROUND dAnswer to 2 decimal places
                 dAnswer = Math.Round(dAnswer, 2);
-                sQuestions = $"Question #{nCntr + 1}: {val1} / {val2} => ";
+                // prompt user to round appropriately
+                Console.WriteLine("For this question, round to 2 decimals!");
+                sQuestions = $"Question #{nCntr + 1}: {dVal1} / {dVal2} => ";
             }
-            else
+            else // else multiplication
             {
-                nAnswer = val1 * val2;
-                sQuestions = $"Question #{nCntr + 1}: {val1} * {val2} => ";
+                dAnswer = dVal1 * dVal2;
+                sQuestions = $"Question #{nCntr + 1}: {dVal1} * {dVal2} => ";
             }
 
             // display the question and prompt for the answer
-            do
-            {
-                Console.Write(sQuestions);
-                sResponse = Console.ReadLine();
 
-                try
+            // if NOT division, make sure they only type in an integer and not a double
+            if (nOp != 2)
+            {
+                do
                 {
-                    nResponse = int.Parse(sResponse);
-                    dResponse = double.Parse(sResponse);
-                    bValid = true;
-                }
-                catch
+                    // print the question, put it into sResponse
+                    Console.Write(sQuestions);
+                    sResponse = Console.ReadLine();
+
+                    try
+                    {
+                        // try to parse the string into an int, still valid
+                        nResponse = int.Parse(sResponse);
+                        bValid = true;
+                    }
+                    catch
+                    {
+                        // if impossible and invalid, prompt user to enter an integer. no longer valid
+                        Console.WriteLine("Please enter an integer.");
+                        bValid = false;
+                    }
+
+                } while (!bValid);
+            }
+
+           // if DIVISION, make sure they're allowed to enter a double
+            if (nOp == 2)
+            {
+                do
                 {
-                    Console.WriteLine("Please enter an integer.");
-                    bValid = false;
+                    // print the question to the console
+                    Console.Write(sQuestions);
+
+                    try
+                    {
+                        // try to convert the ReadLine into a double, still valid
+                        dResponse = Convert.ToDouble(Console.ReadLine());
+                        bValid = true;
+                    }
+                    catch
+                    {
+                        // if impossible and invalid, prompt user to enter a double. no longer valid
+                        Console.WriteLine("Please enter a double.");
+                        bValid = false;
+                    }
+                } while (!bValid);
+            }
+
+
+            // if problem is NOT containing division...
+            if (nOp != 2)
+            {
+                // if answer is correct, congratulate user
+                if (nResponse == nAnswer)
+                {
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("Well done, {0}!!!", myName);
+
+                    ++nCorrect;
                 }
-
-            } while (!bValid);
-
-            // if response == answer, output flashy reward and increment # correct
-            // else output stark answer
-            if (nResponse == nAnswer)
-            {
-                Console.BackgroundColor = ConsoleColor.Blue;
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("Well done, {0}!!!", myName);
-
-                ++nCorrect;
+                // if answer is incorrect, display apologies and right answer
+                else
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("I'm sorry {0}. The answer is {1}", myName, nAnswer);
+                }
             }
-            else
+            // if the type is DIVISION...
+            if (nOp == 2)
             {
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("I'm sorry {0}. The answer is {1}", myName, nAnswer);
-            }
+                // if answer is correct, congratulate user
+                if (dResponse == dAnswer)
+                {
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("Well done, {0}!!!", myName);
 
-
-            if (dResponse == dAnswer)
-            {
-                Console.BackgroundColor = ConsoleColor.Blue;
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("Well done, {0}!!!", myName);
-
-                ++dCorrect;
-            }
-            else
-            {
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("I'm sorry {0}. The answer is {1}", myName, dAnswer);
+                    ++dCorrect;
+                }
+                // if answer is incorrect, display apologies and right answer 
+                else 
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("I'm sorry {0}. The answer is {1}", myName, dAnswer);
+                }
             }
             
             Console.BackgroundColor = ConsoleColor.Black;
@@ -232,7 +289,9 @@ class Program
         Console.WriteLine();
 
         // output how many they got correct and their score
-        Console.WriteLine("You got {0} correct out of {1}, which is a score of {2:P2}", nCorrect, nQuestions, Convert.ToDouble(nCorrect) / (double)nCntr);
+
+        // ADJUST to show the accurate correct answer with the division doubles combined with the num types
+        Console.WriteLine("You got {0} correct out of {1}, which is a score of {2:P2}", nCorrect + dCorrect, nQuestions + dQuestions, (Convert.ToDouble(nCorrect) + dCorrect) / Convert.ToDouble(nQuestions) + dQuestions);
         Console.WriteLine();
 
         do

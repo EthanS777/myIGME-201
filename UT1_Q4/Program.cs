@@ -189,6 +189,7 @@ namespace UT1_Q4
                 stringAnswer = Console.ReadLine();
                 // stop timer if they click enter
                 timeOutTimer.Stop();
+
                    // if answer is RIGHT.. stop timer, congratulate, and prompt to play again
                 if (stringAnswer == "What do you mean? African or European swallow?")
                 {
@@ -196,7 +197,6 @@ namespace UT1_Q4
 
                     Console.WriteLine("Well done!");
                 here5:
-                    Console.WriteLine("The answer is: What do you mean? African or European swallow?");
                     Console.Write("Play again? ");
                     playAgain = Console.ReadLine();
 

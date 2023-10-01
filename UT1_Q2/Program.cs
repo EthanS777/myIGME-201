@@ -29,7 +29,7 @@ namespace NumberSort
             string sNumbers = Console.ReadLine();
 
             // split the string into the an array of strings which are the individual numbers
-            string[] sWord = sNumbers.Split(' ');
+            string[] sNumber = sNumbers.Split(' ');
 
             // initialize the size of the unsorted array to 0
             int nUnsortedLength = 0;
@@ -38,7 +38,7 @@ namespace NumberSort
             double nThisNumber;
 
             // iterate through the array of number strings
-            foreach (string sThisNumber in sWord)
+            foreach (string sThisNumber in sNumber) ;
             {
                 // if the length of this string is 0 (ie. they typed 2 spaces in a row)
                 if (sThisNumber.Length == 0)
