@@ -8,6 +8,5 @@ namespace VehiclesPE11
 {
     public abstract class Train : Vehicle
     {
-
     }
 }
