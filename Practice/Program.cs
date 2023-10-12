@@ -13,16 +13,17 @@ namespace Practice
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter a string");
-            string readingNow = Console.ReadLine();
-            string[] test = Regex.Split(readingNow, string.Empty); // string split to an array 
-            Array.Sort(test); // sort created string array 
-            string sample = string.Join("", test); //rejoin string array
-            Console.WriteLine(sample);
-            Console.ReadLine();
-
+            public class MyClass
+        {
+            public virtual string GetString()
+            {
+                return myString;
+            }
         }
 
 
     }
+
+
+}
 }
