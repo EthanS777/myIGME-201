@@ -9,21 +9,34 @@ using System.Xml.Linq;
 
 namespace Practice
 {
-    internal class Program
+    public abstract class Classy
     {
-        static void Main(string[] args)
+        private string member;
+
+        public string Member
         {
-            public class MyClass
-        {
-            public virtual string GetString()
-            {
-                return myString;
+
+            get
+            { // read
+                return this.member;
+            }
+            set
+            { // write
+                this.member = value;
             }
         }
-
 
     }
 
 
-}
+    static class Program
+    {
+        static void Main()
+        {
+ 
+        }
+    }
+
+
+
 }
