@@ -1,0 +1,7 @@
+// {type:class}
+// {generate:true}
+// {direction:topDown}
+
+[+I:ICustomer|Greet()]
+
+[+Customer|+name:string; -creditCardNumber:string;|]
