@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace PE13DLL
 {
-    public List<Pet> petList = new List<Pet>();
+   
 
     public class Pets
     {
 
-        
-     
-        
+        public List<Pet> petList = new List<Pet>();
+
+
         public Pet this[int nPetEl]
         {
 
