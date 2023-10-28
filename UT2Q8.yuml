@@ -2,4 +2,14 @@
 // {generate:true}
 // {direction:topDown}
 
-[+Skiing]
+[+A:Skiing|+mountainName:string|+Slide():a; +HaveFun():v|]
+[+I:TakeAction|PutOn(); TakeOff();]
+[+I:Adventure|HaveFun();]
+[+Skiis||+PutOn(); +TakeOff(); +Slide():o;|]
+[+Poles||+PutOn(); +TakeOff(); +Slide():o;|]
+
+[+I:Adventure] ^ [+A:Skiing]
+[+A:Skiing] <-.- [+Skiis]
+[+I:TakeAction] ^ [+Skiis]
+[+A:Skiing] <-.- [+Poles]
+[+I:TakeAction] ^ [+Poles]

@@ -10,33 +10,21 @@ using System.Xml.Linq;
 
 namespace Practice 
 {
-
-
-
     static class Program
     {
-        public class MyClass
-        {
-            public int myInt;
-
-            public MyClass(int nVal)
-            {
-                this.myInt += nVal;
-            }
-        }
-
-        public class MyDerivedClass : MyClass
-        {
-            public MyDerivedClass(int nVal) : base(nVal)
-            {
-                this.myInt = (this.myInt + 2) * 4;
-            }
-        }
         
         static void Main(string[] args)
         {
-            MyDerivedClass myObj = new MyDerivedClass(42);
-            Console.WriteLine(myObj.myInt);
+            SortedList<string, DateTime> friendBirthdays = new SortedList<string, DateTime>();
+            friendBirthdays.Add("Joseph", new DateTime(2002, 10, 31));
+            friendBirthdays.Add("Andrew", new DateTime(2003, 02, 16));
+            friendBirthdays.Add("Violet", new DateTime(2002, 12, 08));
+
+            foreach (KeyValuePair<string, DateTime> valuePair in  friendBirthdays)
+            {
+                Console.WriteLine($"person[{valuePair.Key}] = {valuePair.Value}");
+            }
+
         }
     }
 
