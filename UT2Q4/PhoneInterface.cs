@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace UT2Q4
 {
-    public interface PhoneInterface
-    {
-        void Answer();
-        void MakeCall();
-        void HangUp();
+     public interface PhoneInterface
+     {
+         void Answer();
+         void MakeCall();
+         void HangUp();
 
-    }
+     }
+
 }

@@ -14,6 +14,32 @@ namespace UT2Q4
         public double exteriorSurfaceArea;
         public double interiorVolume;
 
+        // overload boolean operators 
+        /*public static bool operator ==(Tardis a, Tardis b)
+        {
+            return
+        }
+        public static bool operator !=(Tardis a, Tardis b)
+        {
+            return
+        }
+        public static bool operator >(Tardis a, Tardis b)
+        {
+            return
+        }
+        public static bool operator <(Tardis a, Tardis b)
+        {
+            return
+        }
+        public static bool operator <=(Tardis a, Tardis b)
+        {
+            return
+        }
+        public static bool operator >=(Tardis a, Tardis b)
+        {
+            return
+        }*/
+
         public byte WhichDrWho
         {
             get
