@@ -41,6 +41,7 @@ namespace Dyscord
             else
             {
                 e.Handled = true;
+
             }
         }
     }
