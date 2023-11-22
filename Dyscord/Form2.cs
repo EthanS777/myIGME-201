@@ -12,6 +12,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace Dyscord
 {
@@ -22,8 +23,8 @@ namespace Dyscord
         string targetUser = "";
         string targetIp = "";
         int targetPort;
-        string myIp = "";
-        int myPort;
+        string userIp = "";
+        int userPort = 2222;
         Thread thread;
         Socket listener;
 
@@ -32,9 +33,9 @@ namespace Dyscord
             InitializeComponent();
 
             this.Show();
-            SettingsForm settingsForm = new SettingsForm(this, myPort);
+            SettingsForm settingsForm = new SettingsForm(this, userPort);
             settingsForm.ShowDialog();
-            this.myPort = settingsForm.myPort;
+            this.userPort = settingsForm.myPort;
 
             ThreadStart threadStart = new ThreadStart(Listen);
             thread = new Thread(threadStart);
@@ -45,7 +46,7 @@ namespace Dyscord
             {
                 if (iPAddress.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    this.myIp = iPAddress.ToString();
+                    this.userIp = iPAddress.ToString();
                     break;
                 }
             }
@@ -55,13 +56,16 @@ namespace Dyscord
             this.sendButton.Click += new EventHandler(SendButton__Click);
             this.exitButton.Click += new EventHandler(ExitButton__Click);
             this.webBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebBrowser1__DocumentCompleted);
+
+            this.FormClosing += new FormClosingEventHandler(Form__FormClosing);
         }
 
+        
         private void LoginButton__Click(object sender, EventArgs e)
         {
             if (userTextBox.TextLength > 0)
             {
-                webBrowser1.Navigate("http://people.rit.edu/dxsigm/php/login.php?login=" + userTextBox.Text + "&ip=" + myIp + ":" + myPort);
+                webBrowser1.Navigate("http://people.rit.edu/dxsigm/php/login.php?login=" + userTextBox.Text + "&ip=" + userIp + ":" + userPort);
                 webBrowser1.Visible = false;
                 userTextBox.Enabled = false;
                 loginButton.Enabled = false;
@@ -137,6 +141,12 @@ namespace Dyscord
 
         }
 
+       private void Form__FormClosing(object sender, FormClosingEventArgs e)
+        {
+            listener.Close();
+            thread.Abort();
+        }
+
         public void UpdateConversation(string text)
         {
             this.convRichTextBox.Text += text + "\n";
@@ -146,7 +156,7 @@ namespace Dyscord
         {
             UpdateConversationDelegate updateConversationDelegate;
             updateConversationDelegate = new UpdateConversationDelegate(UpdateConversation);
-            IPEndPoint serverEndpoint = new IPEndPoint(IPAddress.Any, this.myPort);
+            IPEndPoint serverEndpoint = new IPEndPoint(IPAddress.Any, this.userPort);
 
             this.listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             listener.Bind(serverEndpoint);
